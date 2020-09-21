@@ -1,6 +1,8 @@
 // Age Array Functions
 let ages = [3, 9, 23, 64, 2, 8, 28, 93];
 
+console.log(`Ages Array: ${ages}`);
+
 function subtractFirstArrValue(arr) {
   arr.shift();
   console.log(`First Value Removed: ${arr}`);
@@ -12,11 +14,13 @@ function addNewAgeToArr(arr, val) {
 }
 
 function ageLoopArr(arr) {
+  let sum;
   for (var i = 0; i < arr.length; i++) {
     sum += arr[i];
+    let avgAge = sum / arr.length;
     return sum / arr.length;
   }
-  console.log(arr);
+  console.log(`Average Age: ${avgAge}`);
 }
 
 subtractFirstArrValue(ages);
@@ -33,44 +37,49 @@ function averageLetters(arr) {
   }
   let sum = lengths.reduce((previous, current) => (current += previous));
   let avg = sum / lengths.length;
+  console.log(`Average Number of Letters Per Name: ${avg} (${arr})`);
   return avg;
 }
 
 function concatNames(arr) {
-  return arr.join();
+  result = arr.join();
+  console.log(`Concatenate Names: ${result} (${arr})`)
+  return result;
 }
 
 averageLetters(names);
 concatNames(names);
 
 let nameLengths = [];
+
 function nameLen(arr) {
   for (let l = 0; l < arr.length; l++) {
     nameLengths.push(arr[l].length);
   }
+  console.log(`NameLengths: ${nameLengths}`);
   let nameLenSum = 0;
   for (let o = 0; o < nameLengths.length; o++) {
     nameLenSum += nameLengths[o].length;
   }
-  console.log(`Sum of All Elements in 'nameLengths': ${nameLenSum}`);
+  console.log(`Sum of All Elements in 'nameLengths': ${nameLenSum} (${arr})`);
 }
+nameLen(names);
 
-function concatWord(word, n) {
-  let combinedWords;
-  for (let w = 0; w <= n; w++) {
-    combinedWords += word;
+function concatWord(str, n) {
+  let combinedWords = '';
+  for (let w = 0; w < n; w++) {
+    combinedWords += str;
   }
   console.log(`Concat Word Result: ${combinedWords}`);
-  return combinedWords;
 }
 
-concatWord(word, 3);
+concatWord('word', 3);
 
 function concatName(first, last) {
   let fullName = `${first} ${last}`;
   return fullName;
 }
-concatName('Robert', 'Ochi');
+console.log(`Concat Name: ${concatName('Robert', 'Ochi')}`);
 
 function greaterThan100(numberArr) {
   let sum = numberArr.reduce((previous, current) => (current += previous));
@@ -85,23 +94,30 @@ function greaterThan100(numberArr) {
   }
 }
 
+// add a little randomness to this so it can be tested properly
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
 const testArray = [
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
 ];
-console.log(testArray);
 greaterThan100(testArray);
 
 function averageArr(arr) {
   let sum = arr.reduce((previous, current) => (current += previous));
-  let avg = sum / lengths.length;
+  let avg = sum / arr.length;
   console.log(`averageArray: The average of the elements is ${avg}.`);
+  return avg;
 }
 
 function compareArrAvg(arr1, arr2) {
@@ -121,41 +137,41 @@ function compareArrAvg(arr1, arr2) {
   }
 }
 const testArr1 = [
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
 ];
 const testArr2 = [
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
-  Math.random(0, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
+  getRandomInt(1, 100),
 ];
 compareArrAvg(testArr1, testArr2);
 
 function willBuyDrink(isHotOutside, moneyInPocket) {
   if (isHotOutside && moneyInPocket > 10.5) {
     console.log(
-      `You choose to buy a drink, as it is hot outside and you have more than 10.50 in your pocket.`
+      `willBuyDrink: You choose to buy a drink, as it is hot outside and you have more than 10.50 in your pocket. (isHotOutside: ${isHotOutside}, moneyInPocket: ${moneyInPocket})`
     );
     return true;
   } else {
     if (isHotOutside && moneyInPocket < 10.5) {
       console.log(
-        `Despite that you would like to due to how hot it is, you can't buy a drink, as you don't have enough money. (${moneyInPocket})`
+        `willBuyDrink: Despite that you would like to due to how hot it is, you can't buy a drink, as you don't have enough money. (isHotOutside: ${isHotOutside}, moneyInPocket: ${moneyInPocket})`
       );
     } else if (!isHotOutside) {
       console.log(
-        `It's not that hot out, so you don't feel the need to buy a drink.`
+        `willBuyDrink: It's not that hot out, so you don't feel the need to buy a drink. (isHotOutside: ${isHotOutside}, moneyInPocket: ${moneyInPocket})`
       );
     }
     return false;
